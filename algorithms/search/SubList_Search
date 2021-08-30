@@ -1,0 +1,49 @@
+#Search a Linked List in another List 
+
+class Node:
+    def __init__(self, value = 0):
+        self.value = value
+        self.next = None
+
+
+def List(First, Second):
+    #For Both Linked List empty
+    if not First and not Second:
+        return "Both List are Empty"
+    #If only one is Empty
+    if not First or not Second:
+        return "One List is Empty"
+    
+    x = First
+    y = Second
+
+    while y:
+        y = Second
+        while x:
+            if not y:
+                return False
+            elif x.value ==y.value:
+                x = x.next
+                y = y.next
+            else:
+                break
+        if not x:
+            return True
+        x = First
+        Second = Second.next
+    return False
+
+CustomNode1 = Node(3)
+CustomNode1.next = Node(4)
+CustomNode1.next.next = Node(5)
+
+CustomNode2 = Node(3)
+CustomNode2.next = Node(4)
+CustomNode2.next.next = Node(5)
+CustomNode2.next.next.next = Node(6)
+
+if List(CustomNode1, CustomNode2):
+    print("Value Found")
+else:
+    print("Value not Found")
+
